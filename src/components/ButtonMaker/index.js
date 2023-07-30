@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import ShareButton from '../ShareButton'
 import './index.css'
 
 const ButtonMaker = () => {
@@ -59,6 +60,11 @@ const ButtonMaker = () => {
   }
 
   const font = parseInt(styles.fontWeight)
+
+  const shareText = 'Make your own button';
+  const shareUrl = 'https://clist.ccbp.tech/';
+
+  const isShareSupported = navigator.share !== undefined;
 
   return (
     <div className="button-maker-bg-container p-4">
@@ -147,6 +153,13 @@ const ButtonMaker = () => {
               >
                 {buttonText}
               </button>
+              <div>
+      {/* Your content here */}
+      <p className='input-label'>{shareText}</p>
+      <a href={shareUrl}>{}</a>
+      {/* Conditionally render ShareButton based on support */}
+      {isShareSupported && <ShareButton  shareText={shareText} shareUrl={shareUrl} />}
+    </div>
             </div>
           </div>
         </div>
